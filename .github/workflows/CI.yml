@@ -2,8 +2,8 @@ name: Build & Publish
 
 on:
     push:
-        tags:
-            - "v*.*.*" # Trigger on version tags like v0.1.0
+        branches:
+            - main
 
 jobs:
     build:
