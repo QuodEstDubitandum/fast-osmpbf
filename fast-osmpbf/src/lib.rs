@@ -8,10 +8,8 @@ pub mod element;
 pub mod parser;
 /// Prelude
 pub mod prelude;
-/// Contains
+/// Contains Reader and methods to apply filters
 pub mod reader;
-/// Contains function to run simd calculations
-pub mod simd;
 
 pub use element::*;
 pub use osmdata::*;
