@@ -11,17 +11,22 @@
     "types": "wrapper.d.ts",
     "files": [
         "index.js",
+        "wrapper.d.ts",
         "index.node",
-        "index.d.ts",
-        "wrapper.d.ts"
+        "index.d.ts"
     ],
     "scripts": {
         "build": "npx napi build --release",
-        "prepublishOnly": "npx napi prepublish"
+        "prepublishOnly": "npx napi prepublish",
+        "publish": "npx napi prepublish"
     },
     "license": "MIT OR Apache-2.0",
     "devDependencies": {
         "@napi-rs/cli": "^3.4.1",
         "@types/node": "^24.3.0"
-    }
+    },
+    "engines": {
+        "node": ">=18"
+    },
+    "optionalDependencies": {}
 }

@@ -57,9 +57,9 @@ checksum = "1fd0f2584146f6f2ef48085050886acf353beff7305ebd1ae69500e27c67f64b"
 
 [[package]]
 name = "cc"
-version = "1.2.46"
+version = "1.2.48"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b97463e1064cb1b1c1384ad0a0b9c8abd0988e2a91f52606c80ef14aadb63e36"
+checksum = "c481bdbf0ed3b892f6f806287d72acd515b352a4ec27a208489b8c1bc839633a"
 dependencies = [
  "find-msvc-tools",
  "shlex",
@@ -191,18 +191,6 @@ dependencies = [
 [[package]]
 name = "fast-osmpbf"
 version = "0.1.0"
-dependencies = [
- "crossbeam-channel",
- "flate2",
- "pb-rs",
- "quick-protobuf",
- "rayon",
- "xz2",
-]
-
-[[package]]
-name = "fast-osmpbf"
-version = "0.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "54d2511491929a88e58ec88a75af1c6792e273afb1907f6ea1eb73ffd8453081"
 dependencies = [
@@ -218,7 +206,7 @@ dependencies = [
 name = "fast-osmpbf-js"
 version = "0.1.0"
 dependencies = [
- "fast-osmpbf 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "fast-osmpbf",
  "napi",
  "napi-build",
  "napi-derive",
@@ -638,9 +626,9 @@ checksum = "8ea5119cdb4c55b55d432abb513a0429384878c15dde60cc77b1c99de1a95a6a"
 
 [[package]]
 name = "syn"
-version = "2.0.110"
+version = "2.0.111"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a99801b5bd34ede4cf3fc688c5919368fea4e4814a4664359503e6015b280aea"
+checksum = "390cc9a294ab71bdb1aa2e99d13be9c753cd2d7bd6560c77118597410c4d2e87"
 dependencies = [
  "proc-macro2",
  "quote",

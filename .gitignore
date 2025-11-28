@@ -1,8 +1,6 @@
-/target
+**/target
 /assets
 
-
-*/node_modules/
-*/*ts
-*/*js
-*/*node
+**/node_modules/
+index.d.ts
+**/*.node

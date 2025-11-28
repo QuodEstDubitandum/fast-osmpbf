@@ -54,7 +54,7 @@ npm install fast-osmpbf-js
 or add this to your `package.json`:
 
 ```json
-"fast-osmpbf-js" = "0.1"
+"fast-osmpbf-js": "0.1"
 ```
 
 ## Examples
