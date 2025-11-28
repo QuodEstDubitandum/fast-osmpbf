@@ -29,12 +29,15 @@ jobs:
 
             - name: Install dependencies
               run: npm install
+              working-directory: fast-osmpbf-js
 
             - name: Build native addon
               run: npx napi build --release
+              working-directory: fast-osmpbf-js
 
             - name: Prepare prebuilt binaries
               run: npx napi prepublish
+              working-directory: fast-osmpbf-js
 
             - name: Upload artifacts
               uses: actions/upload-artifact@v5
@@ -56,6 +59,7 @@ jobs:
 
             - name: Install dependencies
               run: npm install
+              working-directory: fast-osmpbf-js
 
             - name: Download prebuilt binaries
               uses: actions/download-artifact@v6
@@ -64,6 +68,7 @@ jobs:
 
             - name: Move prebuilt binaries into package
               run: npx napi artifacts
+              working-directory: fast-osmpbf-js
 
             - name: Publish package
               env:
@@ -71,3 +76,4 @@ jobs:
               run: |
                   echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
                   npm publish --access public
+              working-directory: fast-osmpbf-js
