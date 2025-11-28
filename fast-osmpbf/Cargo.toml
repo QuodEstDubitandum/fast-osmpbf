@@ -8,7 +8,7 @@ description = "Fast OSM PBF parser for Rust"
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/QuodEstDubitandum/fast-osmpbf"
 keywords = ["openstreetmap", "osm", "pbf", "parser", "protobuf"]
-categories = ["parsing", "geospatial", "data-processing", "maps", "high-performance"]
+categories = ["parsing", "api-bindings", "concurrency"]
 readme = "README.md"
 
 [dependencies]
