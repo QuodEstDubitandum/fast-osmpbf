@@ -1,7 +1,10 @@
 fast-osmpbf
 ======
-A high-performance Rust library for reading OpenStreetMap files [*.osm.pbf][https://wiki.openstreetmap.org/wiki/PBF_Format].
+A high-performance Rust library for reading OpenStreetMap files [*.osm.pbf](https://wiki.openstreetmap.org/wiki/PBF_Format).
 Also exposes NodeJS bindings. Available on cargo and npm.
+
+[![Crates.io](https://img.shields.io/crates/v/osmpbf.svg)](https://crates.io/crates/fast-osmpbf)
+[![Documentation](https://docs.rs/fast-osmpbf/badge.svg)](https://docs.rs/fast-osmpbf)
 
 ## Benchmarks
 

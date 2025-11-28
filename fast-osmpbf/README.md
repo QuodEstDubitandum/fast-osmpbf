@@ -4,6 +4,9 @@ A high-performance Rust library for reading OpenStreetMap files ([*.osm.pbf](htt
 This library is focused on performance and provides pretty high-level data. if you need some lower level metadata,
 you might want to check out other libraries such as [osmpbf](https://crates.io/crates/osmpbf).
 
+[![Crates.io](https://img.shields.io/crates/v/osmpbf.svg)](https://crates.io/crates/fast-osmpbf)
+[![Documentation](https://docs.rs/fast-osmpbf/badge.svg)](https://docs.rs/fast-osmpbf)
+
 ## Examples
 
 1) Count ways.

@@ -1,7 +1,7 @@
 fast-osmpbf-js
 ======
 A library for reading OpenStreetMap files ([*.osm.pbf](https://wiki.openstreetmap.org/wiki/PBF_Format)).
-It is using NodeJS bindings for the high-performance Rust library (fast-osmpbf)[https://google.com].
+It is using NodeJS bindings for the high-performance Rust library [fast-osmpbf](https://github.com/QuodEstDubitandum/fast-osmpbf).
 
 ## Installation
 
