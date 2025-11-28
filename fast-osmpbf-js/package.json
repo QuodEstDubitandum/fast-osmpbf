@@ -1,35 +1,35 @@
 {
-  "name": "fast-osmpbf-js",
-  "type": "module",
-  "version": "0.1.0",
-  "description": "Node.js bindings for the fast-osmpbf Rust library",
-  "author": {
-    "name": "Daniel Steblin",
-    "email": "d.steblin.dev@gmail.com"
-  },
-  "main": "index.js",
-  "types": "wrapper.d.ts",
-  "files": [
-    "index.js",
-    "wrapper.d.ts",
-    "index.node",
-    "index.d.ts"
-  ],
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/",
-    "access": "public"
-  },
-  "scripts": {
-    "build": "napi build --platform --release",
-    "prepublishOnly": "napi prepublish -t npm",
-    "publish": "npx napi publish"
-  },
-  "license": "MIT OR Apache-2.0",
-  "devDependencies": {
-    "@types/node": "^24.3.0"
-  },
-  "engines": {
-    "node": ">=18"
-  },
-  "optionalDependencies": {}
+    "name": "fast-osmpbf-js",
+    "type": "module",
+    "version": "0.1.0",
+    "description": "Node.js bindings for the fast-osmpbf Rust library",
+    "author": {
+        "name": "Daniel Steblin",
+        "email": "d.steblin.dev@gmail.com"
+    },
+    "main": "index.js",
+    "types": "wrapper.d.ts",
+    "files": [
+        "index.js",
+        "wrapper.d.ts",
+        "index.node",
+        "index.d.ts"
+    ],
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org/",
+        "access": "public"
+    },
+    "scripts": {
+        "build": "napi build --platform --release",
+        "prepublishOnly": "napi prepublish -t npm",
+        "publish": "npx napi publish"
+    },
+    "license": "MIT OR Apache-2.0",
+    "devDependencies": {
+        "@types/node": "^24.3.0"
+    },
+    "engines": {
+        "node": ">=16"
+    },
+    "optionalDependencies": {}
 }
