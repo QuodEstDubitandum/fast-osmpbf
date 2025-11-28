@@ -1,0 +1,26 @@
+[package]
+name = "fast-osmpbf"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.91"
+authors = ["d.steblin.dev@gmail.com"]
+description = "Fast OSM PBF parser for Rust"
+license = "MIT OR Apache-2.0"
+repository = "todo"
+keywords = ["openstreetmap", "osm", "pbf", "parser", "protobuf"]
+categories = ["parsing", "geospatial", "data-processing", "maps", "high-performance"]
+readme = "README.md"
+
+[dependencies]
+rayon = "1.11.0"
+quick-protobuf = "0.8.0"
+flate2 = { version = "1.1.5", features = ["zlib-rs"], default-features = false }
+crossbeam-channel = "0.5"
+xz2 = "0.1.7"
+# memmap2 = "0.9.9"
+
+[build-dependencies]
+pb-rs = "0.10.0"
+
+[features]
+node_bindings = []

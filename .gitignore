@@ -1,0 +1,8 @@
+/target
+/assets
+
+
+*/node_modules/
+*/*ts
+*/*js
+*/*node

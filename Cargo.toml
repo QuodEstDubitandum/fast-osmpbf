@@ -1,0 +1,12 @@
+[workspace]
+members = [
+    "fast-osmpbf",
+    "fast-osmpbf-js",
+]
+
+# Optional: avoid having build artifacts scattered everywhere
+resolver = "2"
+
+# Optional: workspace-wide settings
+[workspace.package]
+edition = "2024"

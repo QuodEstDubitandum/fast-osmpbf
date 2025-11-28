@@ -1,0 +1,101 @@
+// Copyright (c) 2010 Scott A. Crosby. <scott@sacrosby.com>
+
+// Permission is hereby granted, free of charge, to any person obtaining a copy of
+// this software and associated documentation files (the "Software"), to deal in
+// the Software without restriction, including without limitation the rights to
+// use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+// of the Software, and to permit persons to whom the Software is furnished to do
+// so, subject to the following conditions:
+
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+
+syntax = "proto2";
+
+package osmdata;
+
+// --------------------------
+// String Table
+// --------------------------
+message StringTable {
+  repeated bytes s = 1;  // UTF-8 bytes
+}
+
+// --------------------------
+// Dense Node Info
+// --------------------------
+message DenseInfo {
+  repeated int32 version = 1 [packed = true];
+  repeated int64 timestamp = 2 [packed = true];
+  repeated int32 changeset = 3 [packed = true];
+  repeated int32 uid = 4 [packed = true];
+  repeated int32 user_sid = 5 [packed = true];
+  repeated bool visible = 6 [packed = true];
+}
+
+// --------------------------
+// Nodes, Ways, Relations
+// --------------------------
+message Node {
+  required int64 id = 1;
+  repeated uint32 keys = 2 [packed = true]; // indexes into StringTable
+  repeated uint32 vals = 3 [packed = true]; // indexes into StringTable
+  required sint64 lat = 8;  // delta-encoded
+  required sint64 lon = 9;  // delta-encoded
+}
+
+message DenseNodes {
+  repeated sint64 id = 1 [packed = true];           // delta-encoded
+  repeated sint64 lat = 8 [packed = true];          // delta-encoded
+  repeated sint64 lon = 9 [packed = true];          // delta-encoded
+  repeated int32 keys_vals = 10 [packed = true];    // alternating key/value indexes into StringTable
+}
+
+message Way {
+  required int64 id = 1;
+  repeated uint32 keys = 2 [packed = true]; // indexes into StringTable
+  repeated uint32 vals = 3 [packed = true]; // indexes into StringTable
+  repeated sint64 refs = 8 [packed = true]; // delta-encoded node ids
+}
+
+message Relation {
+  required int64 id = 1;
+  repeated uint32 keys = 2 [packed = true];
+  repeated uint32 vals = 3 [packed = true];
+  repeated int32 roles_sid = 8 [packed = true]; // index into StringTable
+  repeated sint64 memids = 9 [packed = true]; // delta-encoded
+  repeated MemberType types = 10 [packed = true];
+}
+
+enum MemberType {
+  NODE = 0;
+  WAY = 1;
+  RELATION = 2;
+}
+
+// --------------------------
+// Primitive Groups and Blocks
+// --------------------------
+message PrimitiveGroup {
+  repeated Node nodes = 1;
+  optional DenseNodes dense = 2;
+  repeated Way ways = 3;
+  repeated Relation relations = 4;
+}
+
+message PrimitiveBlock {
+  required StringTable stringtable = 1;
+  repeated PrimitiveGroup primitivegroup = 2;
+  optional int64 granularity = 17 [default = 100];
+  optional int64 lat_offset = 19 [default = 0];
+  optional int64 lon_offset = 20 [default = 0];
+  optional int64 date_granularity = 18 [default = 1000];
+}

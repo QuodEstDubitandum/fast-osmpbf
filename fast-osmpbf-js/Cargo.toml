@@ -1,0 +1,19 @@
+[package]
+name = "fast-osmpbf-js"
+version = "0.1.0"
+edition = "2024"
+publish = false
+license = "MIT"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+fast-osmpbf = { path = "../fast-osmpbf", features = ["node_bindings"] }
+napi = { version = "3", features = ["napi6", "async"] }
+napi-derive = "3"
+tokio = { version = "1.48.0", features = ["sync", "rt"]}
+rayon = "1.11.0"
+
+[build-dependencies]
+napi-build = "2"
