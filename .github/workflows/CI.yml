@@ -28,7 +28,6 @@ jobs:
               uses: actions/setup-node@v6
               with:
                   node-version: 24
-                  cache: yarn
 
             - name: Setup Rust
               uses: dtolnay/rust-toolchain@stable
@@ -37,7 +36,7 @@ jobs:
                   targets: ${{ matrix.settings.target }}
 
             - name: Install dependencies
-              run: yarn install
+              run: npm install
               working-directory: fast-osmpbf-js
 
             - name: Build
@@ -62,7 +61,7 @@ jobs:
                   node-version: 24
 
             - name: Install dependencies
-              run: yarn install
+              run: npm install
               working-directory: fast-osmpbf-js
 
             - name: Download prebuilt binaries
@@ -71,7 +70,7 @@ jobs:
                   path: fast-osmpbf-js/prebuilds/
 
             - name: Move prebuilt binaries into package
-              run: yarn artifacts
+              run: npm artifacts
               working-directory: fast-osmpbf-js
 
             - name: Publish package
@@ -79,5 +78,5 @@ jobs:
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
               run: |
                   echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
-                  yarn publish --access public
+                  npm publish --access public
               working-directory: fast-osmpbf-js
