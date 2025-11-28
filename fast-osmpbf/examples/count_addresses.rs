@@ -9,6 +9,8 @@ pub fn main() {
         .expect("need a *.osm.pbf file as argument");
     let path = std::path::Path::new(&arg);
     let reader = OsmReader::from_path(path).expect("Invalid file path");
+
+    // apply filter
     reader
         .apply_tag_filter(&[
             "addr:city",
@@ -17,6 +19,8 @@ pub fn main() {
             "addr:housenumber",
         ])
         .expect("Invalid filter applied");
+
+    // iterate using .par_blocks() (Parallelization happens on 2 decoding steps)
     let address_counter: usize = reader
         .par_blocks()
         .map(|block| match block {

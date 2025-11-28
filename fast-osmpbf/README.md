@@ -2,25 +2,11 @@ fast-osmpbf
 ======
 A high-performance Rust library for reading OpenStreetMap files ([*.osm.pbf](https://wiki.openstreetmap.org/wiki/PBF_Format)).
 This library is focused on performance and provides pretty high-level data. if you need some lower level metadata,
-you might want to check out other libraries such as [osmpbf](https://github.com/b-r-u/osmpbf).
-
-## Installation
-
-```bash
-cargo add fast-osmpbf
-```
-
-or add this to your `Cargo.toml`:
-
-```toml
-[dependencies]
-fast-osmpbf = "0.1"
-```
+you might want to check out other libraries such as [osmpbf](https://crates.io/crates/osmpbf).
 
 ## Examples
 
 1) Count ways.
-This uses parallelization on one level. For parallelization on 2 levels, use .par_blocks() instead.
 We can (but dont have to) apply an element filter beforehand. Saves a little bit of computation.
 
 ```rust
@@ -32,6 +18,8 @@ fn main() {
         .expect("need a *.osm.pbf file as argument");
     let path = std::path::Path::new(&arg);
     let reader = OsmReader::from_path(path).expect("Invalid file path");
+
+    // apply filter
     reader
         .apply_element_filter(ElementFilter {
             nodes: false,
@@ -40,6 +28,7 @@ fn main() {
         })
         .expect("Invalid element filter");
 
+    // iterate using .blocks() (Parallelization happens, but only for one decoding step)
     let mut way_counter = 0;
     reader.blocks().for_each(|block| match block {
         ElementBlock::WayBlock(block) => {
@@ -67,6 +56,8 @@ pub fn main() {
         .expect("need a *.osm.pbf file as argument");
     let path = std::path::Path::new(&arg);
     let reader = OsmReader::from_path(path).expect("Invalid file path");
+
+    // apply filter
     reader
         .apply_tag_filter(&[
             "addr:city",
@@ -75,6 +66,8 @@ pub fn main() {
             "addr:housenumber",
         ])
         .expect("Invalid filter applied");
+
+    // iterate using .par_blocks() (Parallelization happens on 2 decoding steps)
     let address_counter: usize = reader
         .par_blocks()
         .map(|block| match block {

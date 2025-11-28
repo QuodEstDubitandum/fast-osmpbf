@@ -8,6 +8,8 @@ fn main() {
         .expect("need a *.osm.pbf file as argument");
     let path = std::path::Path::new(&arg);
     let reader = OsmReader::from_path(path).expect("Invalid file path");
+
+    // apply filter
     reader
         .apply_element_filter(ElementFilter {
             nodes: false,
@@ -16,6 +18,7 @@ fn main() {
         })
         .expect("Invalid element filter");
 
+    // iterate using .blocks() (Parallelization happens, but only for one decoding step)
     let mut way_counter = 0;
     reader.blocks().for_each(|block| match block {
         ElementBlock::WayBlock(block) => {
