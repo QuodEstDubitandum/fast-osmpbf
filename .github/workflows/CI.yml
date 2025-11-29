@@ -50,9 +50,6 @@ jobs:
                   name: bindings-${{ matrix.settings.target }}
                   path: |
                       ${{ env.APP_NAME }}/*.node
-                      ${{ env.APP_NAME }}/index.d.ts
-                      ${{ env.APP_NAME }}/index.js
-                      ${{ env.APP_NAME }}/wrapper.d.ts
                   if-no-files-found: error
 
     publish:
@@ -86,6 +83,15 @@ jobs:
                   echo "Contents of artifacts before moving:"
                   ls -lah
                   ls -lah artifacts
+              working-directory: ${{ env.APP_NAME }}
+
+            - name: Prepare artifacts for NAPI
+              run: |
+                  cd artifacts
+                  for d in */; do
+                    mkdir -p "$d/dist"
+                    mv "$d"/*.node "$d/dist/"
+                  done
               working-directory: ${{ env.APP_NAME }}
 
             - name: Move prebuilt binaries into package
