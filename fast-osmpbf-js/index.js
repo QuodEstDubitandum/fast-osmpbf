@@ -19,6 +19,14 @@ function getBindingPath() {
         arm64: "aarch64",
     }
 
+    const nodeFileMap = {
+        "linux-x64": "index.linux-x64-gnu.node",
+        "linux-arm64": "index.linux-arm64-gnu.node",
+        "darwin-x64": "index.darwin-x64.node",
+        "darwin-arm64": "index.darwin-arm64.node",
+        "win32-x64": "index.win32-x64-msvc.node",
+    }
+
     const mappedPlatform = platformMap[platform]
     const mappedArch = archMap[arch]
 
@@ -27,7 +35,13 @@ function getBindingPath() {
     }
 
     const bindingFolder = `bindings-${mappedArch}-${mappedPlatform}`
-    return join(__dirname, bindingFolder, "index.node")
+    const nodeFile = nodeFileMap[`${platform}-${arch}`]
+
+    if (!nodeFile) {
+        throw new Error(`No binding available for ${platform}-${arch}`)
+    }
+
+    return join(__dirname, bindingFolder, nodeFile)
 }
 
 const native = require(getBindingPath())
