@@ -12,8 +12,8 @@
     "files": [
         "index.js",
         "wrapper.d.ts",
-        "index.node",
-        "index.d.ts"
+        "index.d.ts",
+        "bindings-*/*.node"
     ],
     "scripts": {
         "artifacts": "napi artifacts",
