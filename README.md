@@ -43,23 +43,10 @@ All problems were run using parallelization if the library offered a way to do i
 cargo add fast-osmpbf
 ```
 
-or add this to your `Cargo.toml`:
-
-```toml
-[dependencies]
-fast-osmpbf = "0.1"
-```
-
 ### NodeJS
 
 ```bash
 npm install fast-osmpbf-js
-```
-
-or add this to your `package.json`:
-
-```json
-"fast-osmpbf-js": "0.1"
 ```
 
 ## Examples
