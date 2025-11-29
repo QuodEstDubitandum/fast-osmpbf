@@ -77,21 +77,24 @@ jobs:
               with:
                   path: ${{ env.APP_NAME }}/artifacts/
 
+            - name: Create npm folder
+              run: mkdir -p npm
+              working-directory: ${{ env.APP_NAME }}
+
+            - name: Copy artifacts into npm folder
+              run: |
+                  cp -r artifacts/* npm/
+                  cp index.js npm/
+                  cp index.d.ts npm/
+                  cp wrapper.d.ts npm/
+              working-directory: ${{ env.APP_NAME }}
+
             - name: List prebuilt binaries
               run: |
                   pwd
                   echo "Contents of artifacts before moving:"
                   ls -lah
                   ls -lah artifacts
-              working-directory: ${{ env.APP_NAME }}
-
-            - name: Prepare artifacts for NAPI
-              run: |
-                  cd artifacts
-                  for d in */; do
-                    mkdir -p "$d/dist"
-                    mv "$d"/*.node "$d/dist/"
-                  done
               working-directory: ${{ env.APP_NAME }}
 
             - name: Move prebuilt binaries into package
@@ -103,9 +106,9 @@ jobs:
               shell: bash
 
             - name: Publish package
-              env:
-                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
               run: |
                   echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
                   npm publish --access public
               working-directory: ${{ env.APP_NAME }}
+              env:
+                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
