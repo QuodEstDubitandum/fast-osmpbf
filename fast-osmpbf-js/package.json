@@ -20,6 +20,7 @@
         "access": "public"
     },
     "scripts": {
+        "artifacts": "napi artifacts",
         "build": "napi build --platform --release",
         "prepublishOnly": "napi prepublish -t npm",
         "publish": "npx napi publish"

@@ -70,7 +70,7 @@ jobs:
                   path: fast-osmpbf-js/prebuilds/
 
             - name: Move prebuilt binaries into package
-              run: npm artifacts
+              run: npm run artifacts
               working-directory: fast-osmpbf-js
 
             - name: Publish package
