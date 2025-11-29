@@ -1,11 +1,15 @@
 {
     "name": "fast-osmpbf-js",
     "type": "module",
-    "version": "0.1.4",
+    "version": "0.2.0",
     "description": "Node.js bindings for the fast-osmpbf Rust library",
     "author": {
         "name": "Daniel Steblin",
         "email": "d.steblin.dev@gmail.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/QuodEstDubitandum/fast-osmpbf"
     },
     "main": "index.js",
     "types": "wrapper.d.ts",

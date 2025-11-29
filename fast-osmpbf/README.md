@@ -7,6 +7,28 @@ you might want to check out other libraries such as [osmpbf](https://crates.io/c
 [![Crates.io](https://img.shields.io/crates/v/osmpbf.svg)](https://crates.io/crates/fast-osmpbf)
 [![Documentation](https://docs.rs/fast-osmpbf/badge.svg)](https://docs.rs/fast-osmpbf)
 
+
+## Benchmarks
+
+- CPU: Intel(R) Core(TM) i5-9600K CPU @ 3.70GHz
+- Memory: 16GB
+- OS: Linux (Ubuntu)
+- Dataset: `germany-latest.osm.pbf` (~4.6GB)
+
+```
+Hyperfine was used to benchmark with 10 runs each.
+What you see here is the mean time of these 10 runs.
+All problems were run using parallelization if the library offered a way to do it.
+```
+
+
+| Problem         | fast-osmpbf |  osmpbf  | osmpbfreader |
+|-----------------|-------------|----------|--------------|
+| Count ways      | 13.51 s     | 19.06 s  | 39.58 s      |
+| Count addresses | 15.33 s     | 21.70 s  | 45.45 s      |
+
+
+
 ## Examples
 
 1) Count ways.
@@ -95,26 +117,6 @@ pub fn main() {
     println!("Addresses: {:?}", address_counter);
 }
 ```
-
-## Benchmarks
-
-- CPU: Intel(R) Core(TM) i5-9600K CPU @ 3.70GHz
-- Memory: 16GB
-- OS: Linux (Ubuntu)
-- Dataset: `germany-latest.osm.pbf` (~4.6GB)
-
-```
-Hyperfine was used to benchmark with 10 runs each.
-What you see here is the mean time of these 10 runs.
-All problems were run using parallelization if the library offered a way to do it.
-```
-
-
-| Problem         | fast-osmpbf |  osmpbf  | osmpbfreader |
-|-----------------|-------------|----------|--------------|
-| Count ways      | 13.51 s     | 19.06 s  | 39.58 s      |
-| Count addresses | 15.33 s     | 21.70 s  | 45.45 s      |
-
 
 ## License
 

@@ -5,17 +5,25 @@ It is using NodeJS bindings for the high-performance Rust library [fast-osmpbf](
 
 [![npm](https://img.shields.io/npm/v/fast-osmpbf-js.svg)](https://www.npmjs.com/package/fast-osmpbf-js)
 
-## Installation
+## Benchmarks
 
-```bash
-npm install fast-osmpbf-js
+- CPU: Intel(R) Core(TM) i5-9600K CPU @ 3.70GHz
+- Memory: 16GB
+- OS: Linux (Ubuntu)
+- Dataset: `germany-latest.osm.pbf` (~4.6GB)
+
+```
+Hyperfine was used to benchmark with 10 runs each.
+What you see here is the mean time of these 10 runs.
+All problems were run using parallelization if the library offered a way to do it.
 ```
 
-or add this to your `package.json`:
 
-```json
-"fast-osmpbf-js": "0.1"
-```
+| Problem         | fast-osmpbf-js | osm-pbf-parser | osm-read |
+|-----------------|----------------|----------------|----------|
+| Count ways      | 18.10 s        | 330.57 s       | 523.80 s |
+| Count addresses | 30.04 s        | 359.06 s       | 603.33 s |
+
 
 ## Examples
 
@@ -98,26 +106,6 @@ export interface JsElementBlock {
   stringTable: Array<string> // probably irrelevant for you, needed for functions to decode encoded data
 }
 ```
-
-
-## Benchmarks
-
-- CPU: Intel(R) Core(TM) i5-9600K CPU @ 3.70GHz
-- Memory: 16GB
-- OS: Linux (Ubuntu)
-- Dataset: `germany-latest.osm.pbf` (~4.6GB)
-
-```
-Hyperfine was used to benchmark with 10 runs each.
-What you see here is the mean time of these 10 runs.
-All problems were run using parallelization if the library offered a way to do it.
-```
-
-
-| Problem         | fast-osmpbf-js | osm-pbf-parser | osm-read |
-|-----------------|----------------|----------------|----------|
-| Count ways      | 18.10 s        | 330.57 s       | 523.80 s |
-| Count addresses | 30.04 s        | 359.06 s       | 603.33 s |
 
 
 ## License
