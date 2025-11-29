@@ -26,10 +26,10 @@
     },
     "license": "MIT OR Apache-2.0",
     "devDependencies": {
+        "@napi-rs/cli": "^3.4.1",
         "@types/node": "^24.3.0"
     },
     "engines": {
         "node": ">=16"
-    },
-    "optionalDependencies": {}
+    }
 }
