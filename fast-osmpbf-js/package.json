@@ -19,10 +19,6 @@
         "registry": "https://registry.npmjs.org/",
         "access": "public"
     },
-    "napi": {
-        "name": "fast-osmpbf-js",
-        "output": "prebuilds"
-    },
     "scripts": {
         "artifacts": "napi artifacts",
         "build": "napi build --platform --release",
