@@ -44,12 +44,6 @@ jobs:
               run: ${{ matrix.settings.build }}
               working-directory: ${{ env.APP_NAME }}
 
-            - name: List files to be uploaded
-              run: |
-                  echo "Working directory: $(pwd)"
-                  echo "Listing all .node files under prebuilds:"
-                  find ${{ env.APP_NAME }} -type f -name "*.node" || echo "No .node files found"
-
             - name: Upload artifact
               uses: actions/upload-artifact@v5
               with:
