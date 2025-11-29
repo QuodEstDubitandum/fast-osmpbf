@@ -73,11 +73,12 @@ jobs:
 
             - name: Create npm dirs
               run: npx napi create-npm-dirs
+              working-directory: ${{ env.APP_NAME }}
 
             - name: Download prebuilt binaries
               uses: actions/download-artifact@v6
               with:
-                  path: artifacts/
+                  path: ${{ env.APP_NAME }}/artifacts/
 
             - name: List prebuilt binaries
               run: |
@@ -85,9 +86,11 @@ jobs:
                   echo "Contents of artifacts before moving:"
                   ls -lah
                   ls -lah artifacts
+              working-directory: ${{ env.APP_NAME }}
 
             - name: Move prebuilt binaries into package
               run: npm run artifacts
+              working-directory: ${{ env.APP_NAME }}
 
             - name: List packages
               run: ls -R ./npm
