@@ -2,7 +2,4 @@
 /assets
 
 **/node_modules/
-index.d.ts
 **/*.node
-
-fast-osmpbf-js-test/
