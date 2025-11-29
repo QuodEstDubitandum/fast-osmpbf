@@ -48,7 +48,11 @@ jobs:
               uses: actions/upload-artifact@v5
               with:
                   name: bindings-${{ matrix.settings.target }}
-                  path: fast-osmpbf-js/prebuilds/*
+                  path: |
+                      ${{ env.APP_NAME }}.*.node
+                      ${{ env.APP_NAME }}.*.index.d.ts
+                      ${{ env.APP_NAME }}.index.js
+                      ${{ env.APP_NAME }}.wrapper.d.ts
                   if-no-files-found: error
 
     publish:
