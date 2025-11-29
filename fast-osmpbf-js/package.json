@@ -1,7 +1,7 @@
 {
     "name": "fast-osmpbf-js",
     "type": "module",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "description": "Node.js bindings for the fast-osmpbf Rust library",
     "author": {
         "name": "Daniel Steblin",
