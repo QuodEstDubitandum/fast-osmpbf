@@ -54,9 +54,7 @@ jobs:
               uses: actions/upload-artifact@v5
               with:
                   name: bindings-${{ matrix.settings.target }}
-                  path: |
-                      ${{ env.APP_NAME }}.*.node
-                      ${{ env.APP_NAME }}.*.wasm
+                  path: fast-osmpbf-js/prebuilds/**
                   if-no-files-found: error
     publish:
         name: Publish to npm
@@ -81,7 +79,7 @@ jobs:
             - name: Download prebuilt binaries
               uses: actions/download-artifact@v6
               with:
-                  path: artifacts
+                  path: prebuilds/
 
             - name: Move prebuilt binaries into package
               run: npm run artifacts
