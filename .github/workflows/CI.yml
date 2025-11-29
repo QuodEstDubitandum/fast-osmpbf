@@ -48,22 +48,14 @@ jobs:
               run: |
                   echo "Working directory: $(pwd)"
                   echo "Listing all .node files under prebuilds:"
-                  find ${{ env.APP_NAME }}/prebuilds -type f -name "*.node" || echo "No .node files found"
-                  echo "Listing index.d.ts, index.js, wrapper.d.ts if present:"
-                  for f in ${{ env.APP_NAME }}/index.d.ts ${{ env.APP_NAME }}/index.js ${{ env.APP_NAME }}/wrapper.d.ts; do
-                    if [ -f "$f" ]; then
-                      echo "Found: $f"
-                    else
-                      echo "Missing: $f"
-                    fi
-                  done
+                  find ${{ env.APP_NAME }} -type f -name "*.node" || echo "No .node files found"
 
             - name: Upload artifact
               uses: actions/upload-artifact@v5
               with:
                   name: bindings-${{ matrix.settings.target }}
                   path: |
-                      ${{ env.APP_NAME }}/prebuilds/**/*.node
+                      ${{ env.APP_NAME }}/*.node
                       ${{ env.APP_NAME }}/index.d.ts
                       ${{ env.APP_NAME }}/index.js
                       ${{ env.APP_NAME }}/wrapper.d.ts
