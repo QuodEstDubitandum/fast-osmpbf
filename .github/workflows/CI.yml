@@ -50,6 +50,7 @@ jobs:
                   name: bindings-${{ matrix.settings.target }}
                   path: |
                       ${{ env.APP_NAME }}/*.node
+                      ${{ env.APP_NAME }}/index.d.ts
                   if-no-files-found: error
 
     publish:
@@ -85,7 +86,6 @@ jobs:
               run: |
                   cp -r artifacts/* npm/
                   cp index.js npm/
-                  cp index.d.ts npm/
                   cp wrapper.d.ts npm/
               working-directory: ${{ env.APP_NAME }}
 
