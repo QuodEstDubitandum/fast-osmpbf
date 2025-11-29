@@ -49,13 +49,8 @@ jobs:
               with:
                   name: bindings-${{ matrix.settings.target }}
                   path: fast-osmpbf-js/prebuilds/*
-
-            - name: Upload artifact
-              uses: actions/upload-artifact@v5
-              with:
-                  name: bindings-${{ matrix.settings.target }}
-                  path: fast-osmpbf-js/prebuilds/**
                   if-no-files-found: error
+
     publish:
         name: Publish to npm
         runs-on: ubuntu-latest
