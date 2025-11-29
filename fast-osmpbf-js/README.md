@@ -3,6 +3,8 @@ fast-osmpbf-js
 A library for reading OpenStreetMap files ([*.osm.pbf](https://wiki.openstreetmap.org/wiki/PBF_Format)).
 It is using NodeJS bindings for the high-performance Rust library [fast-osmpbf](https://github.com/QuodEstDubitandum/fast-osmpbf).
 
+[![npm](https://img.shields.io/npm/v/fast-osmpbf-js.svg)](https://www.npmjs.com/package/fast-osmpbf-js)
+
 ## Installation
 
 ```bash

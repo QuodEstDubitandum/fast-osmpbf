@@ -6,6 +6,8 @@ Also exposes NodeJS bindings. Available on cargo and npm.
 [![Crates.io](https://img.shields.io/crates/v/osmpbf.svg)](https://crates.io/crates/fast-osmpbf)
 [![Documentation](https://docs.rs/fast-osmpbf/badge.svg)](https://docs.rs/fast-osmpbf)
 
+[![npm](https://img.shields.io/npm/v/fast-osmpbf-js.svg)](https://www.npmjs.com/package/fast-osmpbf-js)
+
 ## Benchmarks
 
 - CPU: Intel(R) Core(TM) i5-9600K CPU @ 3.70GHz

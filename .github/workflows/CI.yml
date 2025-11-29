@@ -83,14 +83,6 @@ jobs:
                   mv artifacts/* ./
               working-directory: ${{ env.APP_NAME }}
 
-            - name: List prebuilt binaries
-              run: |
-                  pwd
-                  echo "Contents of artifacts before moving:"
-                  ls -lah
-                  ls -lah artifacts
-              working-directory: ${{ env.APP_NAME }}
-
             - name: Publish package
               run: |
                   echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
