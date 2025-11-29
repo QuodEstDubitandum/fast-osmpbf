@@ -78,13 +78,9 @@ jobs:
               with:
                   path: ${{ env.APP_NAME }}/artifacts/
 
-            # - name: Create npm folder
-            #   run: mkdir -p npm
-            #   working-directory: ${{ env.APP_NAME }}
-
-            - name: Copy artifacts into root folder
+            - name: Move artifacts into root folder
               run: |
-                  cp -r artifacts/* ./
+                  mv artifacts/* ./
               working-directory: ${{ env.APP_NAME }}
 
             - name: List prebuilt binaries
@@ -97,7 +93,6 @@ jobs:
 
             - name: Publish package
               run: |
-                  echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
                   npm publish --access public
               working-directory: ${{ env.APP_NAME }}
               env:
