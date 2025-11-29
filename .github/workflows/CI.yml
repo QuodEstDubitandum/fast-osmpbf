@@ -38,21 +38,21 @@ jobs:
 
             - name: Install dependencies
               run: npm install
-              working-directory: fast-osmpbf-js
+              working-directory: ${{ env.APP_NAME }}
 
             - name: Build
               run: ${{ matrix.settings.build }}
-              working-directory: fast-osmpbf-js
+              working-directory: ${{ env.APP_NAME }}
 
             - name: Upload artifact
               uses: actions/upload-artifact@v5
               with:
                   name: bindings-${{ matrix.settings.target }}
                   path: |
-                      ${{ env.APP_NAME }}.*.node
-                      ${{ env.APP_NAME }}.*.index.d.ts
-                      ${{ env.APP_NAME }}.index.js
-                      ${{ env.APP_NAME }}.wrapper.d.ts
+                      ${{ env.APP_NAME }}/prebuilds/**/*.node
+                      ${{ env.APP_NAME }}/index.d.ts
+                      ${{ env.APP_NAME }}/index.js
+                      ${{ env.APP_NAME }}/wrapper.d.ts
                   if-no-files-found: error
 
     publish:
@@ -69,11 +69,11 @@ jobs:
 
             - name: Install dependencies
               run: npm install
-              working-directory: fast-osmpbf-js
+              working-directory: ${{ env.APP_NAME }}
 
             - name: Create npm dirs
               run: npx napi create-npm-dirs
-              working-directory: fast-osmpbf-js
+              working-directory: ${{ env.APP_NAME }}
 
             - name: Download prebuilt binaries
               uses: actions/download-artifact@v6
@@ -82,7 +82,7 @@ jobs:
 
             - name: Move prebuilt binaries into package
               run: npm run artifacts
-              working-directory: fast-osmpbf-js
+              working-directory: ${{ env.APP_NAME }}
 
             - name: Publish package
               env:
@@ -90,4 +90,4 @@ jobs:
               run: |
                   echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
                   npm publish --access public
-              working-directory: fast-osmpbf-js
+              working-directory: ${{ env.APP_NAME }}
