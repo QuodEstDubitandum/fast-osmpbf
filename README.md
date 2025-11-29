@@ -191,7 +191,7 @@ import { JsElementBlock, OsmReader, getTags } from "fast-osmpbf-js"
 
 const reader = new OsmReader("./scripts/osm-data/germany-latest.osm.pbf")
 const relevantTags = ["addr:city", "addr:postcode", "addr:street", "addr:housenumber"]
-const stream = reader.streamBlocks(relevantTags)
+const stream = reader.streamBlocks(null, relevantTags)
 
 async function main() {
     let totalItems = 0

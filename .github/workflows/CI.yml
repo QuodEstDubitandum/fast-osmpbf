@@ -83,6 +83,19 @@ jobs:
                   mv artifacts/* ./
               working-directory: ${{ env.APP_NAME }}
 
+            - name: List directory contents
+              run: |
+                  echo "=== Root directory ==="
+                  ls -la
+                  echo ""
+                  echo "=== All .node files ==="
+                  find . -name "*.node" -type f
+              working-directory: ${{ env.APP_NAME }}
+
+            - name: Check what will be published
+              run: npm pack --dry-run
+              working-directory: ${{ env.APP_NAME }}
+
             - name: Publish package
               run: |
                   echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
