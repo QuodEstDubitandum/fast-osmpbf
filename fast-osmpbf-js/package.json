@@ -1,7 +1,7 @@
 {
     "name": "fast-osmpbf-js",
     "type": "module",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "Node.js bindings for the fast-osmpbf Rust library",
     "author": {
         "name": "Daniel Steblin",
@@ -15,10 +15,6 @@
         "index.node",
         "index.d.ts"
     ],
-    "publishConfig": {
-        "registry": "https://registry.npmjs.org/",
-        "access": "public"
-    },
     "scripts": {
         "artifacts": "napi artifacts",
         "build": "napi build --platform --release"
