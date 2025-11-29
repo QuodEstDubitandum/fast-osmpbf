@@ -93,6 +93,7 @@ jobs:
 
             - name: Publish package
               run: |
+                  echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
                   npm publish --access public
               working-directory: ${{ env.APP_NAME }}
               env:
